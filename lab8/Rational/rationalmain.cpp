@@ -5,29 +5,23 @@ using namespace std;
 
 int main()
 {
-  Rational a(5,6), b(3,7), c, s, d;
-  cout << "*** display a and b ***\n";
-  a.print();
-  b.print();
-  cout << "*** display c ***\n";
-  c.print();  // recall that c was instantiated with the default constructor
+  Rational a(5,6), b(3,7), c, s, d, e;
 
-  // 'mathematically' add a and b
-  cout << "*** compute s as the math sum of a and b, and display s ***\n";
-  d = a + b;
-  d.print();
-
-  cout << "*** difference of a and b ***\n";
-  d = a - b;
-  d.print();
-
-  cout << "*** a multiplied by b ***\n";
+  cout << "a is: " << a << endl;
+  cout << "b is: " << b << endl;
+  cout << "c, s, and d are: " << c << " " << s << " " << d << endl;
+  c = a + b;
+  cout << "a + b: " << c << endl;
+  s = a - b;
+  cout << "a - b: " << s << endl;
   d = a * b;
-  d.print();
-
-  cout << "*** a divided by b ***\n";
+  cout << "a * b: " << d << endl;
   d = a / b;
-  d.print();
+  cout << "a / b: " << d << endl;
 
+  cin >> b;
+  cout << "You rational number is: " << b << endl;
+  b.simplify();
+  cout << "b simplififed is: " << b << endl;
   return 0;
 }

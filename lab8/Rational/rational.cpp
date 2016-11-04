@@ -1,7 +1,10 @@
-//Taylor Murray rational.cpp the class implementation file
+//Taylor Murray for Part 1 of lab 8
+//rational.cpp the class implementation file
 #include<iostream>
-#include "rational.h"
+#include<cmath>
 using namespace std;
+#include "rational.h"
+
 // Default contructor
 Rational::Rational(){
   setRational(1, 1);
@@ -61,4 +64,35 @@ Rational Rational::operator*(Rational r){
 
 Rational Rational::operator/(Rational r){
   return Rational(numer * r.denom, denom * r.numer);
+}
+
+//Returning a stream that has the numerator and the denominator
+//The ostream has to be taken in by reference
+ostream& operator<< (ostream &s, Rational &c){
+  s << c.numer << "/" << c.denom;
+  return s;
+}
+
+//The istream has to be taken in by reference so it can know that
+//it read in a input since two things were taken out of the stream
+istream& operator>> (istream &s, Rational &c){
+  int x, y;
+  cout << "Enter the numerator and denominator of you rational number: ";
+  s >> x >> y;
+  c.setRational(x, y);
+  return s;
+}
+
+//simplifies using gcd algorithm
+void Rational::simplify(){
+  int a, b, t;
+  a = numer;
+  b = denom;
+  //This is the iterative implementation of the euclideam algorithm
+  while( b != 0){
+    t = b;
+    b = a % b;
+    a = t;
+  }
+   setRational(numer / a, denom / a);
 }
